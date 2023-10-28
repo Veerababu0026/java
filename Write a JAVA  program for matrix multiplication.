@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class MatrixMultiplication {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of rows in matrix A: ");
+        int rowsA = scanner.nextInt();
+        System.out.print("Enter the number of columns in matrix A: ");
+        int colsA = scanner.nextInt();
+        System.out.print("Enter the number of columns in matrix B: ");
+        int colsB = scanner.nextInt();
+
+        
+        int[][] matrixA = new int[rowsA][colsA];
+        System.out.println("Enter elements of matrix A:");
+        for (int i = 0; i < rowsA; i++) {
+            for (int j = 0; j < colsA; j++) {
+                matrixA[i][j] = scanner.nextInt();
+            }
+        }
+
+
+        int[][] matrixB = new int[colsA][colsB]; // note the dimensions
+        System.out.println("Enter elements of matrix B:");
+        for (int i = 0; i < colsA; i++) {
+            for (int j = 0; j < colsB; j++) {
+                matrixB[i][j] = scanner.nextInt();
+            }
+        }
+
+        
+        int[][] matrixC = new int[rowsA][colsB];
+
+  
+        for (int i = 0; i < rowsA; i++) {
+            for (int j = 0; j < colsB; j++) {
+                for (int k = 0; k < colsA; k++) {
+                    matrixC[i][j] += matrixA[i][k] * matrixB[k][j];
+                }
+            }
+        }
+
+        // Print the result
+        System.out.println("Resultant matrix after multiplication:");
+        for (int i = 0; i < rowsA; i++) {
+            for (int j = 0; j < colsB; j++) {
+                System.out.print(matrixC[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
