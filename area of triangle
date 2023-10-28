@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+public class TriangleAreaCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose a method to calculate triangle area:");
+        System.out.println("1. Base and Height");
+        System.out.println("2. Three sides (Heron's Formula)");
+        System.out.println("3. Coordinates of Vertices");
+
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Enter base:");
+                double base = scanner.nextDouble();
+                System.out.println("Enter height:");
+                double height = scanner.nextDouble();
+                System.out.println("Area: " + triangleArea(base, height));
+                break;
+            case 2:
+                System.out.println("Enter side a:");
+                double a = scanner.nextDouble();
+                System.out.println("Enter side b:");
+                double b = scanner.nextDouble();
+                System.out.println("Enter side c:");
+                double c = scanner.nextDouble();
+                System.out.println("Area: " + triangleArea(a, b, c));
+                break;
+            case 3:
+                System.out.println("Enter coordinates for vertex A (x1 y1):");
+                double x1 = scanner.nextDouble();
+                double y1 = scanner.nextDouble();
+                System.out.println("Enter coordinates for vertex B (x2 y2):");
+                double x2 = scanner.nextDouble();
+                double y2 = scanner.nextDouble();
+                System.out.println("Enter coordinates for vertex C (x3 y3):");
+                double x3 = scanner.nextDouble();
+                double y3 = scanner.nextDouble();
+                System.out.println("Area: " + triangleArea(x1, y1, x2, y2, x3, y3));
+                break;
+            default:
+                System.out.println("Invalid choice");
+        }
+    }
+    public static double triangleArea(double base, double height) {
+        return 0.5 * base * height;
+    }
+
+    
+    public static double triangleArea(double a, double b, double c) {
+        double s = (a + b + c) / 2;
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+
+
+    public static double triangleArea(double x1, double y1, double x2, double y2, double x3, double y3) {
+        return 0.5 * Math.abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2));
+    }
+}
