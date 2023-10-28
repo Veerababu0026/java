@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class FibonacciSum {
+
+    public static void main(String[] args) {
+        int sum = 33;
+        List<Integer> fibonacciSeries = generateFibonacciUntil(sum);
+        List<Integer> seriesThatSumsToTarget = findSeriesThatSumsToTarget(fibonacciSeries, sum);
+
+        System.out.println("Fibonacci series: " + fibonacciSeries);
+        System.out.println("Series that sums to " + sum + ": " + seriesThatSumsToTarget);
+    }
+
+    private static List<Integer> generateFibonacciUntil(int limit) {
+        List<Integer> series = new ArrayList<>();
+        series.add(0);
+        series.add(1);
+        int next;
+        while ((next = series.get(series.size() - 1) + series.get(series.size() - 2)) <= limit) {
+            series.add(next);
+        }
+        return series;
+    }
+
+    private static List<Integer> findSeriesThatSumsToTarget(List<Integer> series, int target) {
+        List<Integer> result = new ArrayList<>();
+        int sum = 0;
+        for (int i = series.size() - 1; i >= 0; i
