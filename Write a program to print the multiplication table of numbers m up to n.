@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        System.out.print("Enter the value for M: ");
+        int M = scanner.nextInt();
+        
+        System.out.print("Enter the value for N: ");
+        int N = scanner.nextInt();
+        
+  
+        for (int i = 1; i <= N; i++) {
+            System.out.println(i + "x" + M + "=" + (i * M));
+        }
+    }
+}
